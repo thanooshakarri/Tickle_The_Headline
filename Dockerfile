@@ -1,6 +1,6 @@
 FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime
 
-LABEL author="Gus Hahn-Powell"
+LABEL author="Team-3"
 LABEL description="Default container definition for course project. Based on https://parsertongue.org/tutorials/using-the-ua-hpc/#constructing-a-docker-image"
 
 # This will be our default directory for subsequent commands
@@ -23,7 +23,8 @@ RUN pip install -U transformers==4.17.0 \
 # and jupyter for running notebooks
 RUN conda install -y ipython jupyter ipywidgets widgetsnbextension \
     && jupyter nbextension enable --py widgetsnbextension
-# let's define a default command for this image.
+# let's define a default command for this image
+RUN pip install -r requirements.txt.
 # We'll just print the version for our PyTorch installation
 CMD ["python", "-c" "\"import torch;print(torch.__version__)\""]
 
